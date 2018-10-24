@@ -33,7 +33,13 @@ public class UsuarioDaoImp implements UsuarioDao{
 
     @Override
     public List<Usuario> listarUsuarios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List<Usuario> list = (List<Usuario>) session.createQuery("from Usuario").list(); 
+        tx.commit();
+        session.close();
+        
+        return list;
     }
     
 }

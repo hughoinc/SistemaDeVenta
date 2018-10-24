@@ -26,7 +26,7 @@ public class Usuario implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
     
     private String nombre;
     
@@ -51,11 +51,11 @@ public class Usuario implements Serializable{
     
     
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -115,7 +115,7 @@ public class Usuario implements Serializable{
         this.estado = estado;
     }
 
-    public Date getUltimo_login() {
+    public Date getUltimoLogin() {
         return ultimoLogin;
     }
 
