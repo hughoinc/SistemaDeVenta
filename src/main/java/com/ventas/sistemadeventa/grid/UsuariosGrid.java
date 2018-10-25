@@ -57,7 +57,6 @@ public class UsuariosGrid extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        System.out.println(dato[rowIndex][columnIndex]);
         return dato[rowIndex][columnIndex];
     }
 

@@ -9,6 +9,7 @@ import com.ventas.sistemadeventa.dao.UsuarioDao;
 import com.ventas.sistemadeventa.dao.UsuarioDaoImp;
 import com.ventas.sistemadeventa.grid.UsuariosGrid;
 import com.ventas.sistemadeventa.model.Usuario;
+import java.awt.Point;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JTable;
@@ -80,6 +81,11 @@ public class UsuariosView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        dataUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dataUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(dataUsuarios);
 
         btnActulizar.setText("Actualizar Grid");
@@ -162,6 +168,18 @@ public class UsuariosView extends javax.swing.JFrame {
     private void btnActulizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActulizarActionPerformed
         actulizarData();
     }//GEN-LAST:event_btnActulizarActionPerformed
+
+    private void dataUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataUsuariosMouseClicked
+        JTable table =(JTable) evt.getSource();
+        Point point = evt.getPoint();
+        int row = table.rowAtPoint(point);
+        if (evt.getClickCount() == 2 && table.getSelectedRow() != -1) {
+            int id = Integer.parseInt(table.getModel().getValueAt(row, 0).toString());
+            UsuarioDao usuarioDao = new UsuarioDaoImp();
+            Usuario us = usuarioDao.buscarUsuarioPorId(id);
+            new NuevoUsuarioView(us).setVisible(true);
+        }
+    }//GEN-LAST:event_dataUsuariosMouseClicked
 
     /**
      * @param args the command line arguments

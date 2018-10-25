@@ -9,7 +9,6 @@ import com.ventas.sistemadeventa.model.Usuario;
 import com.ventas.sistemadeventa.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
@@ -24,7 +23,7 @@ public class UsuarioDaoImp implements UsuarioDao{
     public void save(Usuario usuario) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-       session.save(usuario);
+       session.saveOrUpdate(usuario);
        tx.commit();
        session.close();
        
@@ -40,6 +39,17 @@ public class UsuarioDaoImp implements UsuarioDao{
         session.close();
         
         return list;
+    }
+
+    @Override
+    public Usuario buscarUsuarioPorId(int id) {
+        Usuario u = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        u = session.get(Usuario.class, id);
+        tx.commit();
+        session.close();
+        return u;
     }
     
 }

@@ -192,5 +192,10 @@ public class Usuario implements Serializable{
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", usuario=" + usuario + ", password=" + password + ", perfil=" + perfil + ", estado=" + estado + ", ultimoLogin=" + ultimoLogin + ", fecha=" + fecha + ", vigencia=" + vigencia + '}';
+    }
     
 }
