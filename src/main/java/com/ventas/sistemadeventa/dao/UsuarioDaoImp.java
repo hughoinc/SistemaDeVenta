@@ -15,29 +15,25 @@ import org.hibernate.Transaction;
  *
  * @author hugho
  */
-public class UsuarioDaoImp implements UsuarioDao{
-    
-    
+public class UsuarioDaoImp implements UsuarioDao {
 
     @Override
     public void save(Usuario usuario) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-       session.saveOrUpdate(usuario);
-       tx.commit();
-       session.close();
-       
-       
+        session.saveOrUpdate(usuario);
+        tx.commit();
+        session.close();
     }
 
     @Override
     public List<Usuario> listarUsuarios() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        List<Usuario> list = (List<Usuario>) session.createQuery("from Usuario").list(); 
+        List<Usuario> list = (List<Usuario>) session.createQuery("from Usuario").list();
         tx.commit();
         session.close();
-        
+
         return list;
     }
 
@@ -51,5 +47,15 @@ public class UsuarioDaoImp implements UsuarioDao{
         session.close();
         return u;
     }
-    
+
+    @Override
+    public void borrarUsuario(int id) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Usuario u = session.get(Usuario.class, id);
+        session.delete(u);
+        tx.commit();
+        session.close();
+    }
+
 }

@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author hugho
@@ -23,11 +22,12 @@ public class NuevoUsuarioView extends javax.swing.JFrame {
      */
     public NuevoUsuarioView() {
         initComponents();
+        this.setTitle("Nuevo Usuario");
     }
-    
+
     public NuevoUsuarioView(Usuario usuario) {
         initComponents();
-        
+        this.setTitle("Actualizar Usuario");
         txtApellidoMaterno.setText(usuario.getApellidoMaterno());
         txtApellidoPaterno.setText(usuario.getApellidoPaterno());
         txtEstado.setText(usuario.getEstado());
@@ -70,6 +70,8 @@ public class NuevoUsuarioView extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         jLabel10 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+
+        setResizable(false);
 
         jLabel9.setText("Vigencia:");
 
@@ -228,13 +230,13 @@ public class NuevoUsuarioView extends javax.swing.JFrame {
         usuario.setUsuario(txtUsuario.getText());
         usuario.setVigencia(new Date());
         usuario.setUltimoLogin(new Date());
-        if(!txtId.getText().equals("")){
+        if (!txtId.getText().equals("")) {
             usuario.setId(Integer.parseInt(txtId.getText()));
         }
         UsuarioDao usuarioDao = new UsuarioDaoImp();
 
         usuarioDao.save(usuario);
-        
+
         txtApellidoMaterno.setText("");
         txtApellidoPaterno.setText("");
         txtEstado.setText("");
@@ -244,14 +246,12 @@ public class NuevoUsuarioView extends javax.swing.JFrame {
         txtUsuario.setText("");
         txtFecha.setText("");
         txtVigencia.setText("");
-        
-        JOptionPane.showMessageDialog(null, "Se Guardo el Usuario con éxito", "OK", JOptionPane.INFORMATION_MESSAGE);
-        
-                
-        
+        this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Se Guardo el Usuario con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;

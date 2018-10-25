@@ -13,9 +13,13 @@ import java.util.List;
  * @author hugho
  */
 public interface UsuarioDao {
-    
+
     public void save(Usuario usuario);
+
     public List<Usuario> listarUsuarios();
+
     public Usuario buscarUsuarioPorId(int id);
-    
+
+    public void borrarUsuario(int id);
+
 }
