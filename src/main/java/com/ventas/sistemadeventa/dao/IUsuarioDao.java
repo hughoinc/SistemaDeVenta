@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author hugho
  */
-public interface UsuarioDao {
+public interface IUsuarioDao {
 
     public void save(Usuario usuario);
 

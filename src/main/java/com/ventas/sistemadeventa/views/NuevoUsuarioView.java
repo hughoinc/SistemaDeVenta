@@ -1,10 +1,10 @@
 package com.ventas.sistemadeventa.views;
 
-import com.ventas.sistemadeventa.dao.UsuarioDao;
 import com.ventas.sistemadeventa.dao.UsuarioDaoImp;
 import com.ventas.sistemadeventa.model.Usuario;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import com.ventas.sistemadeventa.dao.IUsuarioDao;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -233,7 +233,7 @@ public class NuevoUsuarioView extends javax.swing.JFrame {
         if (!txtId.getText().equals("")) {
             usuario.setId(Integer.parseInt(txtId.getText()));
         }
-        UsuarioDao usuarioDao = new UsuarioDaoImp();
+        IUsuarioDao usuarioDao = new UsuarioDaoImp();
 
         usuarioDao.save(usuario);
 

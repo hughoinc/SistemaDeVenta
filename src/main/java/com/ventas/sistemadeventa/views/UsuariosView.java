@@ -5,7 +5,6 @@
  */
 package com.ventas.sistemadeventa.views;
 
-import com.ventas.sistemadeventa.dao.UsuarioDao;
 import com.ventas.sistemadeventa.dao.UsuarioDaoImp;
 import com.ventas.sistemadeventa.grid.UsuariosGrid;
 import com.ventas.sistemadeventa.model.Usuario;
@@ -13,6 +12,7 @@ import java.awt.Point;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import com.ventas.sistemadeventa.dao.IUsuarioDao;
 
 /**
  *
@@ -31,7 +31,7 @@ public class UsuariosView extends javax.swing.JFrame {
     }
 
     private void actulizarData() {
-        UsuarioDao u = new UsuarioDaoImp();
+        IUsuarioDao u = new UsuarioDaoImp();
         List<Usuario> usuarios = u.listarUsuarios();
         Object data[][] = new Object[usuarios.size()][6];
         int index = 0;
@@ -235,7 +235,7 @@ public class UsuariosView extends javax.swing.JFrame {
             System.out.println("Resp: " + resp);
             if (resp == JOptionPane.YES_OPTION) {
                 int id = Integer.parseInt(dataUsuarios.getModel().getValueAt(dataUsuarios.getSelectedRow(), 0).toString());
-                UsuarioDao ux = new UsuarioDaoImp();
+                IUsuarioDao ux = new UsuarioDaoImp();
                 ux.borrarUsuario(id);
                 actulizarData();
             }
@@ -245,7 +245,7 @@ public class UsuariosView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void modificarUsuario(int id) {
-        UsuarioDao usuarioDao = new UsuarioDaoImp();
+        IUsuarioDao usuarioDao = new UsuarioDaoImp();
         Usuario us = usuarioDao.buscarUsuarioPorId(id);
         new NuevoUsuarioView(us).setVisible(true);
     }

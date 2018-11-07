@@ -15,7 +15,7 @@ import org.hibernate.Transaction;
  *
  * @author hugho
  */
-public class UsuarioDaoImp implements UsuarioDao {
+public class UsuarioDaoImp implements IUsuarioDao {
 
     @Override
     public void save(Usuario usuario) {
