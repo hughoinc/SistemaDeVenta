@@ -33,7 +33,8 @@ public class Descripcion implements Serializable{
     @Column(name="descripcion_larga")
     private String descripcionLarga;
     
-    private Date vigencia;
+    @Column(name="fecha_ingreso")
+    private Date fechaIngreso;
 
     public Integer getId() {
         return id;
@@ -59,12 +60,12 @@ public class Descripcion implements Serializable{
         this.descripcionLarga = descripcionLarga;
     }
 
-    public Date getVigencia() {
-        return vigencia;
+    public Date getFechaIngreso() {
+        return fechaIngreso;
     }
 
-    public void setVigencia(Date vigencia) {
-        this.vigencia = vigencia;
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
 
     @Override
@@ -73,7 +74,7 @@ public class Descripcion implements Serializable{
         hash = 61 * hash + Objects.hashCode(this.id);
         hash = 61 * hash + Objects.hashCode(this.descripcionCorta);
         hash = 61 * hash + Objects.hashCode(this.descripcionLarga);
-        hash = 61 * hash + Objects.hashCode(this.vigencia);
+        hash = 61 * hash + Objects.hashCode(this.fechaIngreso);
         return hash;
     }
 
@@ -98,7 +99,7 @@ public class Descripcion implements Serializable{
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.vigencia, other.vigencia)) {
+        if (!Objects.equals(this.fechaIngreso, other.fechaIngreso)) {
             return false;
         }
         return true;

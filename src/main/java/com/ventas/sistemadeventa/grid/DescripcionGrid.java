@@ -12,24 +12,21 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author hugho
  */
-public class UsuariosGrid extends AbstractTableModel {
-
+public class DescripcionGrid extends AbstractTableModel {
     Object dato[][];
     String cabezera[];
 
-    public UsuariosGrid(Object data[][], int filas, int columnas) {
+    public DescripcionGrid(Object data[][], int filas, int columnas) {
         this.dato = data;
         this.cabezera = new String[columnas];
     }
 
     protected String[] columnNames = new String[]{
-        "Id", "Nombre", "Ap Paterno", "Ap Materno", "Usuario", "Fecha"
+        "Id", "Desc Larga", "Desc Corta", "Vigencia"
     };
 
     protected Class[] columnClasses = new Class[]{
         Integer.class, 
-        String.class, 
-        String.class,
         String.class, 
         String.class, 
         Date.class
@@ -59,5 +56,4 @@ public class UsuariosGrid extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         return dato[rowIndex][columnIndex];
     }
-
 }
