@@ -7,6 +7,9 @@ package com.ventas.sistemadeventa.views;
 
 import com.ventas.sistemadeventa.dao.IRutaDao;
 import com.ventas.sistemadeventa.dao.RutaDaoImpl;
+import com.ventas.sistemadeventa.grid.RutaGrid;
+import com.ventas.sistemadeventa.model.Ruta;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +23,7 @@ public class RutaView extends javax.swing.JFrame {
      */
     public RutaView() {
         initComponents();
+        actulizarData();
     }
 
     /**
@@ -157,7 +161,7 @@ public class RutaView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnNuevaRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaRutaActionPerformed
-        new NuevaDescripcionView().setVisible(true);
+        new NuevaRutaView().setVisible(true);
     }//GEN-LAST:event_btnNuevaRutaActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -186,6 +190,18 @@ public class RutaView extends javax.swing.JFrame {
 
     
     private void actulizarData (){
+        IRutaDao rutaDao = new RutaDaoImpl();
+        List<Ruta> listaRutas = rutaDao.listarRutas();
+        Object data[][] = new Object[listaRutas.size()][3];
+        int index = 0;
+        for (Ruta item : listaRutas) {
+            data[index][0] = item.getId();
+            data[index][1] = item.getNombreRuta();
+            data[index][2] = item.getCiudad();
+            index++;
+        }
+
+        dataTableRutas.setModel(new RutaGrid(data, 1, 3));
     }
     
     private void modificarRuta (int id){

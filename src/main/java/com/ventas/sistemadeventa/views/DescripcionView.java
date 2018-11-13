@@ -35,8 +35,8 @@ public class DescripcionView extends javax.swing.JFrame {
         int index = 0;
         for (Descripcion item : desc) {
             data[index][0] = item.getId();
-            data[index][1] = item.getDescripcionCorta();
-            data[index][2] = item.getDescripcionLarga();
+            data[index][1] = item.getDescripcionLarga();
+            data[index][2] = item.getDescripcionCorta();
             data[index][3] = item.getFechaIngreso();
             index++;
         }
